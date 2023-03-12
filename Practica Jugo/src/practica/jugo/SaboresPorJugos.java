@@ -40,39 +40,49 @@ public class SaboresPorJugos {
         saboresPorJugo.add(idSabor);
     }
 
-    public void modificarSabor(int indice,int idJugo, SaboresPorJugos idSabor) {
-        saboresPorJugo.set(ubicacion, idSabor);
-    }
+    public void modificarSabor(int indice, int idJugo, SaboresPorJugos idSabor) {
+    saboresPorJugo.set(indice, idSabor);
+}
 
-    public String listarSabores() {
-        String salida = "";
-        for (SaboresPorJugos particularidad : saboresPorJugo) {
-            salida += "Id de Jugo: " + particularidad.getIdJugo() + "\n";
-            salida += "Id de Sabor: " + particularidad.getIdSabor() + ", ";
+
+public String listarSabores() {
+    boolean primerSabor=true;
+    String salida = "";
+    for (SaboresPorJugos particularidad : saboresPorJugo) {
+        salida += "Id de Jugo: " + particularidad.getIdJugo() + "\n";
+        if (particularidad.getIdSabor() != 0) {
+            if (primerSabor) {
+                salida += "Id de Sabor: " + particularidad.getIdSabor() + ", ";
+                primerSabor = false;
+            } else {
+                salida += ", Id de Sabor: " + particularidad.getIdSabor() + ", ";
+            }
             salida += "Porcentaje del sabor: " + particularidad.getPorcentaje() + "%\n";
         }
-        return salida;
     }
+    return salida;
+}
+
 
     public void mostrarSabor(int indice) {
         hoja.setText(listarSabores());
         JOptionPane.showMessageDialog(null, hoja);
     }
 
-    public boolean buscarSabor(int idSabor) {
-        boolean existe = false;
-        this.iteracion = 0;
-        for (SaboresPorJugos particularidad : saboresPorJugo) {
-            if (particularidad.getIdSabor() == idSabor) {
-                existe = true;
-                this.ubicacion = iteracion;
+        public boolean buscarSabor(int idSabor) {
+            boolean existe = false;
+            this.iteracion = 0;
+            for (SaboresPorJugos particularidad : saboresPorJugo) {
+                if (particularidad.getIdSabor() == idSabor) {
+                    existe = true;
+                    this.ubicacion = iteracion;
+                }
+                this.iteracion = this.iteracion + 1;
             }
-            this.iteracion = this.iteracion + 1;
-        }
-        System.out.println(existe);
+            System.out.println(existe);
 
-        return existe;
-    }
+            return existe;
+        }
 
     public boolean validarPorcentaje() {
         int totalPorcentaje = 0;
