@@ -72,6 +72,7 @@ public String listarSabores() {
         public boolean buscarSabor(int idSabor) {
             boolean existe = false;
             this.iteracion = 0;
+            this.ubicacion = -1;
             for (SaboresPorJugos particularidad : saboresPorJugo) {
                 if (particularidad.getIdSabor() == idSabor) {
                     existe = true;
