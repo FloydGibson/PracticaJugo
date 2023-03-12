@@ -14,6 +14,7 @@ public class PracticaJugo {
         int menuOpciones =0;
         int opcionJugos=0;
         int opcionSabores=0;
+        int opcionSaboresPorJugo=0;
         AlmacenamientoJugos datosJugos = new AlmacenamientoJugos();
         AlmacenamientoSabores datosSabores = new AlmacenamientoSabores();
 
@@ -104,9 +105,36 @@ public class PracticaJugo {
                             + "\n Cualquier otro numero para salir"));
                     }
                     break;
-                case 3:
                     
+                    
+                case 3:
+                opcionSaboresPorJugo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opcion que desea elegir \n"
+                        + "1. Ingresar Sabores por Jugo \n"
+                        + "2. Mostrar Sabores por Jugo disponibles \n"
+                        + "3. Modificar Sabores por Jugo disponibles\n"
+                        + "\n Cualquier otro numero para salir"));
+                 while ( opcionSaboresPorJugo == 1 ||  opcionSaboresPorJugo == 2 ||  opcionSaboresPorJugo == 3) {
+                        switch ( opcionSaboresPorJugo) {
+                            
+                            case 1:
+                                break;
+                            case 2:
+                                    break;
+                            case 3:
+                                break;
+                        }
+                        
+                          opcionSaboresPorJugo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opcion que desea elegir \n"
+                        + "1. Ingresar Sabores por Jugo \n"
+                        + "2. Mostrar Sabores por Jugo disponibles \n"
+                        + "3. Modificar Sabores por Jugo disponibles\n"
+                        + "\n Cualquier otro numero para salir"));      
+                        }
                     break;
+
+            }
+                 
+                 
             }
 menuOpciones = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opcion que desea elegir \n"
                 + "1. Jugos \n"
@@ -117,4 +145,4 @@ menuOpciones = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opcion q
 
     }
 
-}
+
