@@ -8,7 +8,7 @@ import javax.swing.JTextArea;
 public class SaboresPorJugos {
 
     private int idJugo, idSabor;
-    private List<SaboresPorJugos> saboresPorJugo;
+    private List<SaboresPorJugos> saboresPorJugo  = new ArrayList<>();
     private int iteracion;
     private int ubicacion;
     private int porcentaje;
@@ -25,7 +25,6 @@ public class SaboresPorJugos {
     public SaboresPorJugos(int idJugo, int idSabor) {
         this.idJugo = idJugo;
         this.idSabor = idSabor;
-        this.saboresPorJugo = new ArrayList<>();
     }
 
     public int getIdJugo() {
