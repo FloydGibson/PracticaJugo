@@ -17,6 +17,7 @@ public class PracticaJugo {
         int opcionSaboresPorJugo=0;
         AlmacenamientoJugos datosJugos = new AlmacenamientoJugos();
         AlmacenamientoSabores datosSabores = new AlmacenamientoSabores();
+       
 
         menuOpciones = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opcion que desea elegir \n"
                 + "1. Jugos \n"
@@ -57,11 +58,7 @@ public class PracticaJugo {
                                 break;
 
                         }
-                        opcionJugos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opcion que desea elegir \n"
-                                + "1. Ingresar Jugos \n"
-                                + "2. Mostrar Jugos \n"
-                                + "3. Modificar Jugos \n"
-                                + "\n Cualquier otro numero para salir"));
+                     
                     }
                     break;
                     
@@ -117,8 +114,10 @@ public class PracticaJugo {
                         switch ( opcionSaboresPorJugo) {
                             
                             case 1:
+                                
                                 break;
                             case 2:
+                               
                                     break;
                             case 3:
                                 break;
