@@ -3,10 +3,10 @@ package practica.jugo;
 
 public class SaboresPorJugos {
 
-    private String sabores,nombreJugo;
+    private String nombreSabor,nombreJugo;
     private int  idJugo,idSabor;
-    public SaboresPorJugos(String sabores, String nombreJugo, int idJugo, int idSabor) {
-        this.sabores = sabores;
+    public SaboresPorJugos(String nombreSabor, String nombreJugo, int idJugo, int idSabor) {
+        this.nombreSabor = nombreSabor;
         this.nombreJugo = nombreJugo;
         this.idJugo = idJugo;
         this.idSabor = idSabor;
@@ -15,13 +15,15 @@ public class SaboresPorJugos {
     public SaboresPorJugos() {
     }
 
-    public String getSabores() {
-        return sabores;
+    public String getNombreSabor() {
+        return nombreSabor;
     }
 
-    public void setSabores(String sabores) {
-        this.sabores = sabores;
+    public void setNombreSabor(String nombreSabor) {
+        this.nombreSabor = nombreSabor;
     }
+
+
 
     public String getNombreJugo() {
         return nombreJugo;

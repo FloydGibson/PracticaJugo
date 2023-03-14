@@ -10,19 +10,29 @@ public class AlmacenamientoSPJ {
     int ubicacion,iteracion;
     private List<SaboresPorJugos>listaCompleta=new ArrayList<>();
     JTextArea hoja=new JTextArea();
-    public void agregadoCompleto(int idJugo,String nombreJugo,int idSabor,String sabores,double cantidadSabor){
+    
+    public void agregadoCompleto(int idJugo,String nombreJugo,int idSabor,String nombreSabor,double cantidadSabor){
         SaboresPorJugos saborJugo=new SaboresPorJugos();
         saborJugo.setIdJugo(idJugo);
         saborJugo.setNombreJugo(nombreJugo);
         saborJugo.setIdSabor(idSabor);
-        saborJugo.setSabores(sabores);
+        saborJugo.setNombreSabor(nombreSabor);
         listaCompleta.add(saborJugo);
     }
+     public void modificarCompleto (int idJugo,String nombreJugo,int idSabor,String nombreSabor,double cantidadSabor){
+         SaboresPorJugos saborJugo=new SaboresPorJugos();
+        saborJugo.setIdJugo(idJugo);
+        saborJugo.setNombreJugo(nombreJugo);
+        saborJugo.setIdSabor(idSabor);
+        saborJugo.setNombreSabor(nombreSabor);
+        listaCompleta.add(ubicacion,saborJugo);
+     }
+    
     
     public String listarCompleta(){
         String salida="";
         for(SaboresPorJugos particularidad:listaCompleta){
-            salida=salida+"IdJugo: "+particularidad.getIdJugo()+"\nJugo: "+particularidad.getNombreJugo()+"\nIdSabor: "+particularidad.getIdSabor()+"\nSabores: "+particularidad.getSabores()+"\n";
+            salida+="IdJugo: "+particularidad.getIdJugo()+"\nJugo: "+particularidad.getNombreJugo()+"\nIdSabor: "+particularidad.getIdSabor()+"\nSabor: "+particularidad.getNombreSabor()+"\n";
         }
         return salida;
     }
@@ -32,11 +42,11 @@ public class AlmacenamientoSPJ {
         JOptionPane.showMessageDialog(null,hoja);
     }
     
-    public boolean busquedaJugosC(String nombreJugo){
+    public boolean busquedaJugosC(int idJugo){
         boolean existe=false;
         this.iteracion=0;
         for(SaboresPorJugos particularidad:listaCompleta){
-            if(particularidad.getNombreJugo().equals(nombreJugo)){
+            if(particularidad.getIdJugo() == (idJugo)){
                 existe=true;
                 this.ubicacion=this.iteracion;
             }
@@ -45,11 +55,11 @@ public class AlmacenamientoSPJ {
         return existe;
     }
     
-    public boolean busquedaSaboresC(String sabores){
+    public boolean busquedaSaboresC(int idSabor){
         boolean existe=false;
         this.iteracion=0;
         for(SaboresPorJugos particularidad:listaCompleta){
-            if(particularidad.getSabores().equals(sabores)){
+            if(particularidad.getIdSabor() == (idSabor)){
                 existe=true;
                 this.ubicacion=this.iteracion;
             }
