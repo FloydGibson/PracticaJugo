@@ -1,10 +1,19 @@
 package practica.jugo;
 
-
 public class SaboresPorJugos {
 
-    private String nombreSabor,nombreJugo;
-    private int  idJugo,idSabor;
+    private String nombreSabor, nombreJugo;
+    private int idJugo, idSabor;
+    private Double porcentaje;
+
+    public Double getPorcentaje() {
+        return porcentaje;
+    }
+
+    public void setPorcentaje(Double porcentaje) {
+        this.porcentaje = porcentaje;
+    }
+
     public SaboresPorJugos(String nombreSabor, String nombreJugo, int idJugo, int idSabor) {
         this.nombreSabor = nombreSabor;
         this.nombreJugo = nombreJugo;
@@ -22,8 +31,6 @@ public class SaboresPorJugos {
     public void setNombreSabor(String nombreSabor) {
         this.nombreSabor = nombreSabor;
     }
-
-
 
     public String getNombreJugo() {
         return nombreJugo;
@@ -48,5 +55,5 @@ public class SaboresPorJugos {
     public void setIdSabor(int idSabor) {
         this.idSabor = idSabor;
     }
-   
+
 }
