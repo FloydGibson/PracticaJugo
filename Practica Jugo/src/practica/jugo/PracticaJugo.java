@@ -126,7 +126,7 @@ public class PracticaJugo {
                     while (opcionSaboresPorJugo >= 1 && opcionSaboresPorJugo <= 3) {
                         switch (opcionSaboresPorJugo) {
 
-                            case 1://creacion de jugos con su respectivo sabor
+                            case 1:
                                 nombreJugo = null;
                                 nombreSabor = null;
                                 datosJugos.mostrar();

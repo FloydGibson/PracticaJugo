@@ -32,25 +32,9 @@ public class AlmacenamientoSPJ {
     }
 
     public String listarCompleta() {
-        //inicio de cambios
-        int datoIdJugo=0;
-        String datoNombreJugo="";
-        
-        for(SaboresPorJugos particularidad:listaCompleta){
-            if(particularidad.getIdJugo()!=datoIdJugo){
-                datoIdJugo=particularidad.getIdJugo();
-                if(particularidad.getNombreJugo().equals(datoNombreJugo)){
-                    datoNombreJugo="";
-                }else{
-                    datoNombreJugo=particularidad.getNombreJugo();
-                }
-            }
-        }
-        
-        String salida = "idJugo: "+datoIdJugo+"\nJugo: "+datoNombreJugo;
-        //fin de cambios realizados
+        String salida = "";
         for (SaboresPorJugos particularidad : listaCompleta) {
-            salida += "\nIdSabor: " + particularidad.getIdSabor() + "\nSabor: " + particularidad.getNombreSabor() + "\nPorcentaje: " + particularidad.getPorcentaje() + "\n\n";
+            salida += "IdJugo: " + particularidad.getIdJugo() + "\nJugo: " + particularidad.getNombreJugo() + "\nIdSabor: " + particularidad.getIdSabor() + "\nSabor: " + particularidad.getNombreSabor() + "\nPorcentaje: " + particularidad.getPorcentaje() + "\n\n";
         }
         return salida;
     }
