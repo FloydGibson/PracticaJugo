@@ -32,7 +32,8 @@ public class AlmacenamientoSPJ {
     }
 
  public String listarCompleta() {
-    //inicio de cambios
+    //nuevos cambios
+    
     int datoIdJugo=0;
     String datoNombreJugo="";
     String salida="";
