@@ -31,13 +31,35 @@ public class AlmacenamientoSPJ {
         listaCompleta.add(ubicacion, saborJugo);
     }
 
-    public String listarCompleta() {
-        String salida = "";
-        for (SaboresPorJugos particularidad : listaCompleta) {
-            salida += "IdJugo: " + particularidad.getIdJugo() + "\nJugo: " + particularidad.getNombreJugo() + "\nIdSabor: " + particularidad.getIdSabor() + "\nSabor: " + particularidad.getNombreSabor() + "\nPorcentaje: " + particularidad.getPorcentaje() + "\n\n";
+ public String listarCompleta() {
+    //inicio de cambios
+    int datoIdJugo=0;
+    String datoNombreJugo="";
+    String salida="";
+    String salidaSabor ="";
+    String salidaJugo= "" ;
+    for(SaboresPorJugos particularidad:listaCompleta){
+        if(particularidad.getIdJugo()!=datoIdJugo){
+            if(datoIdJugo != 0) { //agrega la salida del jugo previo antes de cambiar al nuevo jugo
+                salidaJugo += "\n" + salidaSabor; //agrega la lista de sabores al jugo previo
+                salida += salidaJugo + "\n"; //agrega el jugo previo a la salida completa
+                salidaSabor = ""; //reinicia la lista de sabores
+            }
+            datoIdJugo=particularidad.getIdJugo();
+            datoNombreJugo=particularidad.getNombreJugo();
+            salidaJugo = "\n\nidJugo: "+datoIdJugo+"\nJugo: "+datoNombreJugo; //inicia la salida del nuevo jugo
         }
-        return salida;
+        salidaSabor += "\nIdSabor: " + particularidad.getIdSabor() + "\nSabor: " + particularidad.getNombreSabor() + "\nPorcentaje: " + particularidad.getPorcentaje()+"\n";
     }
+
+    //agrega la salida del último jugo
+    salidaJugo += "\n" + salidaSabor;
+    salida += salidaJugo + "\n";
+
+    //fin de cambios realizados
+    return salida;
+}
+
 
     public void mostrarListaCompleta() {
         hoja.setText(listarCompleta());
