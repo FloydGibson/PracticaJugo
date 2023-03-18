@@ -128,6 +128,7 @@ public class PracticaJugo {
                                         if (proporcion != 100) {
                                             if (datosSPJ.busquedaJugosC(idJugo) == true) {
                                                 JOptionPane.showMessageDialog(null, "La porporcion del jugo no cumple con el 100% por lo tanto no se guardaran los datos ingresados");
+                                                datosSPJ.busquedaJugosC(idJugo);
                                                 datosSPJ.eliminarDatos();
                                             }
                                         }
