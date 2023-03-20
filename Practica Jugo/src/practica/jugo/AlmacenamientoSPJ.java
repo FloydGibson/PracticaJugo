@@ -28,7 +28,7 @@ public class AlmacenamientoSPJ {
         saborJugo.setIdSabor(idSabor);
         saborJugo.setNombreSabor(nombreSabor);
         saborJugo.setPorcentaje(porcentaje);
-        listaCompleta.set(ubicacion, saborJugo);
+        listaCompleta.add(ubicacion, saborJugo);
     }
     
    

@@ -172,10 +172,13 @@ public class PracticaJugo {
                                     busqueda = busqueda2;
 
                                     if (datosJugos.buscar(busqueda) == true) {
-
-                                       
-                                        cuantosSabores = Integer.parseInt(JOptionPane.showInputDialog("Cuantos sabores desea agregar a su jugo?"));
                                         nombreJugo = datosJugos.obtenerNombreJugo(busqueda);
+                                        datosJugos.eliminarJugo();
+                                        datosSPJ.eliminarDatos();
+                                        
+                                        
+                                        
+                                        cuantosSabores = Integer.parseInt(JOptionPane.showInputDialog("Cuantos sabores desea agregar a su jugo?"));
                                         if (cuantosSabores >= 1 || cuantosSabores > idSabor) {
                                             int cantidad = 0;
                                             proporcion = 0;
@@ -187,7 +190,7 @@ public class PracticaJugo {
                                                 if (datosSabores.buscar(buscarIdSabor) == true) {
                                                     nombreSabor = datosSabores.obtenerNombreSabor(buscarIdSabor);
                                                     idSaborVerdadera = buscarIdSabor;
-
+                                                    datosJugos.agregar(busqueda, nombreJugo);
                                                     cantidadSabor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de sabor que le agregara al jugo\n1.  10%\n2.  20%\n3.  25%\n4.  30%\n5.  40%\n6.   50%\n7.  65%\n8.  75%\n9.  80%\n10.  90%\n11.  100%"));
                                                     if (cantidadSabor == 1) {//10%
                                                         porcentaje = porcentaje + 10;
