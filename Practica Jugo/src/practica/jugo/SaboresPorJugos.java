@@ -5,7 +5,19 @@ public class SaboresPorJugos {
     private String nombreSabor, nombreJugo;
     private int idJugo, idSabor;
     private Double porcentaje;
+    private Object jugosC[][];
 
+    public SaboresPorJugos(String nombreSabor, String nombreJugo, int idJugo, int idSabor, Double porcentaje, Object[][] jugosC) {
+        
+        this.nombreSabor = nombreSabor;
+        this.nombreJugo = nombreJugo;
+        this.idJugo = idJugo;
+        this.idSabor = idSabor;
+        this.porcentaje = porcentaje;
+        this.jugosC = jugosC;
+        
+    }
+    
     public Double getPorcentaje() {
         return porcentaje;
     }
@@ -14,12 +26,7 @@ public class SaboresPorJugos {
         this.porcentaje = porcentaje;
     }
 
-    public SaboresPorJugos(String nombreSabor, String nombreJugo, int idJugo, int idSabor) {
-        this.nombreSabor = nombreSabor;
-        this.nombreJugo = nombreJugo;
-        this.idJugo = idJugo;
-        this.idSabor = idSabor;
-    }
+   
 
     public SaboresPorJugos() {
     }

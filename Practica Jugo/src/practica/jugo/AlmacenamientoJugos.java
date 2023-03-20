@@ -64,4 +64,10 @@ public class AlmacenamientoJugos {
     public void eliminarJugo(){
         listaJugos.remove(ubicacion);
     }
+    
+    public int tamanioLista(){
+       int tamaño=0;
+       tamaño=listaJugos.size();
+       return tamaño; 
+    }
 }
