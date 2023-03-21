@@ -11,23 +11,25 @@ public class AlmacenamientoSPJ {
     private List<SaboresPorJugos> listaCompleta = new ArrayList<>();
     JTextArea hoja = new JTextArea();
 
-    public void agregadoCompleto(int idJugo, String nombreJugo, int idSabor, String nombreSabor, double porcentaje) {
+    public void agregadoCompleto(int idJugo, String nombreJugo, int idSabor, String nombreSabor, double porcentaje,int cuantosSaboresC) {
         SaboresPorJugos saborJugo = new SaboresPorJugos();
         saborJugo.setIdJugo(idJugo);
         saborJugo.setNombreJugo(nombreJugo);
         saborJugo.setIdSabor(idSabor);
         saborJugo.setNombreSabor(nombreSabor);
         saborJugo.setPorcentaje(porcentaje);
+        saborJugo.setCuantosSaboresC(cuantosSaboresC);
         listaCompleta.add(saborJugo);
     }
 
-    public void modificarCompleto(int idJugo, String nombreJugo, int idSabor, String nombreSabor, double porcentaje) {
+    public void modificarCompleto(int idJugo, String nombreJugo, int idSabor, String nombreSabor, double porcentaje,int cuantosSaboresC) {
         SaboresPorJugos saborJugo = new SaboresPorJugos();
         saborJugo.setIdJugo(idJugo);
         saborJugo.setNombreJugo(nombreJugo);
         saborJugo.setIdSabor(idSabor);
         saborJugo.setNombreSabor(nombreSabor);
         saborJugo.setPorcentaje(porcentaje);
+       saborJugo.setCuantosSaboresC(cuantosSaboresC);
         listaCompleta.add(ubicacion, saborJugo);
     }
     
@@ -98,6 +100,15 @@ public class AlmacenamientoSPJ {
         listaCompleta.remove(ubicacion);
     }
     
+    public int obtenerCuantosSabores(int idJugo){
+        int cuantosSabores=0;
+        for(SaboresPorJugos particularidad:listaCompleta){
+            if(particularidad.getCuantosSaboresC()==idJugo){
+                return particularidad.getCuantosSaboresC();
+            }
+        }
+        return 0;
+    }
     
 
 }

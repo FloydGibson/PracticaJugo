@@ -65,9 +65,5 @@ public class AlmacenamientoJugos {
         listaJugos.remove(ubicacion);
     }
     
-    public int tamanioLista(){
-       int tamaño=0;
-       tamaño=listaJugos.size();
-       return tamaño; 
-    }
+    
 }

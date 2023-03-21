@@ -9,7 +9,7 @@ public class PracticaJugo {
         String nombreJugo = null, nombreSabor = null;
         int idJugo = 0, idSabor = 0, busqueda, iteracion;
         int menuOpciones, cuantosSabores;
-        int opcionJugos, opcion;
+        int opcionJugos, opcion, cuantosSaboresC = 0, busqueda2, busqueda3 = 0;
         int opcionSabores;
         int opcionSaboresPorJugo;
         int idSaborVerdadera = 0;
@@ -19,7 +19,7 @@ public class PracticaJugo {
         AlmacenamientoSabores datosSabores = new AlmacenamientoSabores();
         AlmacenamientoSPJ datosSPJ = new AlmacenamientoSPJ();
         String saboresAutomaticos[] = {"Piña", "Sandia", "Pera", "Papaya", "Fresa", "Limon", "Naranja", "Mango", "Manzana", "Mandarina"};
-
+        SaboresPorJugos jugosC = new SaboresPorJugos();
         for (int contador = 0; contador < 10; contador++) {
             idSabor += 1;
             nombreSabor = saboresAutomaticos[contador];
@@ -61,6 +61,8 @@ public class PracticaJugo {
                                     idJugoVerdadera = buscarIdJugo;
                                     cuantosSabores = Integer.parseInt(JOptionPane.showInputDialog("Cuantos sabores desea agregar a su jugo?"));
                                     if (cuantosSabores >= 1 || cuantosSabores > idSabor) {
+                                        cuantosSaboresC = cuantosSabores;
+                                        
                                         int cantidad = 0;
                                         proporcion = 0;
                                         do {
@@ -114,7 +116,7 @@ public class PracticaJugo {
                                                     porcentajes = proporcion2;
                                                     if (datosJugos.buscar(idJugo) == true) {
                                                         if (datosSabores.buscar(idSabor) == true) {
-                                                            datosSPJ.agregadoCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes);
+                                                            datosSPJ.agregadoCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes, cuantosSaboresC);
                                                             datosSPJ.mostrarListaCompleta();
                                                         }
                                                     }
@@ -168,16 +170,26 @@ public class PracticaJugo {
                                         JOptionPane.showMessageDialog(null, "El id #" + busqueda + " no se encontró");
                                     }
                                 } else if (opcion == 2) {//cambiar sabores
-                                    int busqueda2 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del Jugo a modificar"));
+                                    busqueda2 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del Jugo a modificar"));
                                     busqueda = busqueda2;
+                                    busqueda3 = busqueda;
+                                    
 
+                                    
                                     if (datosJugos.buscar(busqueda) == true) {
                                         nombreJugo = datosJugos.obtenerNombreJugo(busqueda);
+                                        if(datosSPJ.busquedaJugosC(busqueda3)==true){
+                                           cuantosSaboresC=datosSPJ.obtenerCuantosSabores(busqueda3);
+                                        }
+                                        iteracion = 0;
+
+                                        do {
+                                            iteracion++;
+                                            datosSPJ.eliminarDatos();
+                                        } while (cuantosSaboresC != iteracion);
                                         datosJugos.eliminarJugo();
-                                        datosSPJ.eliminarDatos();
-                                        
-                                        
-                                        
+                                        datosSPJ.mostrarListaCompleta();
+
                                         cuantosSabores = Integer.parseInt(JOptionPane.showInputDialog("Cuantos sabores desea agregar a su jugo?"));
                                         if (cuantosSabores >= 1 || cuantosSabores > idSabor) {
                                             int cantidad = 0;
@@ -234,7 +246,7 @@ public class PracticaJugo {
 
                                                         if (datosJugos.buscar(idJugo) == true) {
                                                             if (datosSabores.buscar(idSabor) == true) {
-                                                                datosSPJ.modificarCompleto(busqueda, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes);
+                                                                datosSPJ.modificarCompleto(busqueda, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes, cuantosSaboresC);
                                                                 datosSPJ.mostrarListaCompleta();
                                                             }
                                                         }
@@ -355,7 +367,7 @@ public class PracticaJugo {
                                                 } else {
                                                     if (datosJugos.buscar(idJugo) == true) {
                                                         if (datosSabores.buscar(idSabor) == true) {
-                                                            datosSPJ.agregadoCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes);
+                                                            datosSPJ.agregadoCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes, cuantosSaboresC);
                                                             datosSPJ.mostrarListaCompleta();
                                                         }
                                                     }
@@ -410,7 +422,7 @@ public class PracticaJugo {
                                                     if (datosJugos.buscar(idJugo) == true) {
                                                         if (datosSabores.buscar(idSabor) == true) {
 
-                                                            datosSPJ.modificarCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes);
+                                                            datosSPJ.modificarCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes, cuantosSaboresC);
                                                         }
                                                     }
                                                 }
