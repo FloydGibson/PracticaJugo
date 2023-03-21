@@ -62,6 +62,7 @@ public class PracticaJugo {
                                     idJugoVerdadera = buscarIdJugo;
                                     cuantosSabores = Integer.parseInt(JOptionPane.showInputDialog("Cuantos sabores desea agregar a su jugo?"));
                                     if (cuantosSabores >= 1 || cuantosSabores > idSabor) {
+                                        cuantosSaboresC = cuantosSabores;
                                         int cantidad = 0;
                                         proporcion = 0;
                                         do {
@@ -145,7 +146,7 @@ public class PracticaJugo {
                                 }
 
                                 break;
-                          
+                      
                             case 2://ver listado
                                 if (datosJugos.buscar(idJugo) == true) {
                                    int opcionListaJugos = Integer.parseInt(JOptionPane.showInputDialog("1.Ver lista de los IdJugos\n2.Ver los IdJugos con sus respectivos sabores\nOtro numero para salir"));
@@ -199,10 +200,9 @@ public class PracticaJugo {
                                         } while (cuantosSaboresC != iteracion);
                                          datosJugos.eliminarJugo();
                                         datosSPJ.mostrarListaCompleta();
-                                cuantosSabores = Integer.parseInt(JOptionPane.showInputDialog("Cuantos sabores desea agregar a su jugo?"));
+                               cuantosSabores = Integer.parseInt(JOptionPane.showInputDialog("Cuantos sabores desea agregar a su jugo?"));
                                     if (cuantosSabores >= 1 || cuantosSabores > idSabor) {
                                         cuantosSaboresC = cuantosSabores;
-
                                         int cantidad = 0;
                                         proporcion = 0;
                                         do {
@@ -229,8 +229,8 @@ public class PracticaJugo {
                                                 } else if (cantidadSabor == 6) {//50%
                                                     porcentaje = porcentaje + 50;
 
-                                                } else if (cantidadSabor == 7) {//60%
-                                                    porcentaje = porcentaje + 60;
+                                                } else if (cantidadSabor == 7) {//65%
+                                                    porcentaje = porcentaje + 65;
 
                                                 } else if (cantidadSabor == 8) {//75%
                                                     porcentaje = porcentaje + 75;
@@ -256,7 +256,7 @@ public class PracticaJugo {
                                                     porcentajes = proporcion2;
                                                     if (datosJugos.buscar(idJugo) == true) {
                                                         if (datosSabores.buscar(idSabor) == true) {
-                                                            datosSPJ.agregadoCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes, cuantosSaboresC);
+                                                            datosSPJ.agregadoCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes,cuantosSaboresC);
                                                             datosSPJ.mostrarListaCompleta();
                                                         }
                                                     }
@@ -272,8 +272,7 @@ public class PracticaJugo {
                                                 datosSPJ.eliminarDatos();
                                                 if (datosJugos.buscar(idJugo) == true) {
                                                     datosJugos.eliminarJugo();
-                                                    datosSPJ.eliminarDatos();
-                                                    
+                                                   
                                                 }
                                             }
                                         }
