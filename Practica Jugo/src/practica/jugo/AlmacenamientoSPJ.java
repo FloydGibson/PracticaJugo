@@ -23,7 +23,12 @@ public class AlmacenamientoSPJ {
     }
 
     public void modificarCompleto(int idJugo, String nombreJugo, int idSabor, String nombreSabor, double porcentaje,int cuantosSaboresC) {
+         
         SaboresPorJugos saborJugo = new SaboresPorJugos();
+        int CuantosSabores;
+        
+        CuantosSabores=saborJugo.getCuantosSaboresC();
+        if (CuantosSabores==1){
         saborJugo.setIdJugo(idJugo);
         saborJugo.setNombreJugo(nombreJugo);
         saborJugo.setIdSabor(idSabor);
@@ -31,6 +36,18 @@ public class AlmacenamientoSPJ {
         saborJugo.setPorcentaje(porcentaje);
        saborJugo.setCuantosSaboresC(cuantosSaboresC);
         listaCompleta.add(ubicacion, saborJugo);
+        } else if (CuantosSabores>1){
+            
+            for (int contador=0;contador<CuantosSabores;contador++){
+                saborJugo.setIdJugo(idJugo);
+        saborJugo.setNombreJugo(nombreJugo);
+        saborJugo.setIdSabor(idSabor);
+        saborJugo.setNombreSabor(nombreSabor);
+        saborJugo.setPorcentaje(porcentaje);
+       saborJugo.setCuantosSaboresC(cuantosSaboresC);
+        listaCompleta.add(ubicacion-contador, saborJugo);
+            }
+        }
     }
     
    
