@@ -164,7 +164,7 @@ public class PracticaJugo {
                                             + "\n2.Cambiar el nombre del jugo junto a sus respectivo sabores"
                                             + "\nCualquier otro numero para salir."));
                                      
-                               while (opcionModificar == 1 && opcionModificar==2) {//cambiar nombre
+                               while (opcionModificar == 1 || opcionModificar==2) {//cambiar nombre
                                switch (opcionModificar){
                 
                                    case 1:
