@@ -290,13 +290,7 @@ public class PracticaJugo {
                                                 if (datosJugos.buscar(buscarIdJugo) == true) {
                                                     idJugoVerdadera = buscarIdJugo;
                                                     nombreJugo = JOptionPane.showInputDialog("Id de Jugo :" + idJugoVerdadera + "\nIngrese el nuevo nombre del jugo");
-                                                    datosJugos.modificar(idJugoVerdadera, nombreJugo);
-
-                                                    JOptionPane.showMessageDialog(null, "Datos modificados con éxito");
-
-                                                    if (datosSPJ.busquedaJugosC(buscarIdJugo) == true) {
-                                                        if (datosJugos.buscar(buscarIdJugo) == true) {
-                                                            idJugoVerdadera = buscarIdJugo;
+                                                    datosJugos.modificar(idJugoVerdadera, nombreJugo);          
                                                             int buscarCuantosSabores = datosSPJ.obtenerCuantosSabores(idJugoVerdadera);
                                                             System.out.println("hola mundo, la cantidad de sabores es " + buscarCuantosSabores);
                                                             if (buscarCuantosSabores != 1) {
@@ -305,6 +299,7 @@ public class PracticaJugo {
                                                                     datosSPJ.eliminarDatos();
 
                                                                 }
+                                                                JOptionPane.showMessageDialog(null, "Datos modificados con éxito");
                                                                 datosSPJ.mostrarListaCompleta();
 
                                                             } else {
@@ -315,8 +310,7 @@ public class PracticaJugo {
 
                                                             }
 
-                                                        }
-                                                    }
+                                                      
 
                                                 } else {
                                                     JOptionPane.showMessageDialog(null, "El id #" + buscarIdJugo + " no se encontró");

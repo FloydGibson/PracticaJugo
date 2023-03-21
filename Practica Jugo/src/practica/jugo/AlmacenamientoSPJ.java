@@ -138,7 +138,7 @@ public class AlmacenamientoSPJ {
     public void eliminarDatos(){
         listaCompleta.remove(ubicacion);
     }
-    
+    //Pendiente cambiar este metodo
     public int obtenerCuantosSabores(int idJugo){
         int cuantosSabores=0;
         for(SaboresPorJugos particularidad:listaCompleta){
