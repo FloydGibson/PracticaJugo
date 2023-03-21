@@ -30,7 +30,7 @@ public class PracticaJugo {
         menuOpciones = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opcion que desea elegir \n"
                 + "1. Jugos \n"
                 + "2. Sabores \n"
-                + "3.Lista de Sabores por Jugos \n"
+                + "3. Lista de Sabores por Jugos \n"
                 + "\n Cualquier otro numero para cerrar el programa."));
 
         while (menuOpciones >= 1 && menuOpciones <= 3) {
