@@ -346,13 +346,17 @@ public class PracticaJugo {
                     break;
 
                 case 3://sabores por jugo
+                    if (datosJugos.buscar(idJugo) == true) {
                     datosSPJ.mostrarListaCompleta();
+            } else {
+                         JOptionPane.showMessageDialog(null, "Esta lista todavia no ha sido creada...");  
+                       }
             }
 
             menuOpciones = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opcion que desea elegir \n"
                     + "1. Jugos \n"
                     + "2. Sabores \n"
-                    + "3.Lista de Sabores por Jugos \n"
+                    + "3. Lista de Sabores por Jugos \n"
                     + "\n Cualquier otro numero para cerrar el programa."));
         }
 
