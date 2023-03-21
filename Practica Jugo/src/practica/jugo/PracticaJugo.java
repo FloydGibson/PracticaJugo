@@ -74,7 +74,7 @@ public class PracticaJugo {
                                                 nombreSabor = datosSabores.obtenerNombreSabor(buscarIdSabor);
                                                 idSaborVerdadera = buscarIdSabor;
                                                 //pendiente
-                                                cantidadSabor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de sabor que le agregara al jugo\n1.  10%\n2.  20%\n3.  25%\n4.  30%\n5.  40%\n6.   50%\n7.  65%\n8.  75%\n9.  80%\n10.  90%\n11.  100%"));
+                                                cantidadSabor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de sabor que le agregara al jugo\n1.  10%\n\t2.  20%\n3.  25%\n\t4.  30%\n5.  40%\n\t6.   50%\n7.  65%\n\t8.  75%\n9.  80%\n\t10.  90%\n11.  100%"));
                                                 if (cantidadSabor == 1) {//10%
                                                     porcentaje = porcentaje + 10;
                                                 } else if (cantidadSabor == 2) {//20%
@@ -165,113 +165,125 @@ public class PracticaJugo {
                                         + "\n2.Cambiar el nombre del jugo junto a sus respectivo sabores"
                                         + "\nCualquier otro numero para salir."));
 
-                                while (opcionModificar == 1 || opcionModificar == 2) {//cambiar nombre
+                                while (opcionModificar == 1 || opcionModificar == 2) {//cambiar sabores
                                     switch (opcionModificar) {
 
                                         case 1:
                                             buscarIdJugo = 0;
                                             buscarIdJugo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id de Jugo a modificar"));
+
                                             if (datosSPJ.busquedaJugosC(buscarIdJugo) == true) {
                                                 if (datosJugos.buscar(buscarIdJugo) == true) {
                                                     idJugoVerdadera = buscarIdJugo;
-                                                    nombreJugo = datosJugos.obtenerNombreJugo(idJugoVerdadera);
-                                                }
-                                                if (datosSPJ.busquedaJugosC(buscarIdJugo) == true) {
-                                                    cuantosSaboresC = datosSPJ.obtenerCuantosSabores(buscarIdJugo);
-                                                }
-                                                iteracion = 0;
-                                                do {
-                                                    iteracion++;
-                                                    datosSPJ.eliminarDatos();
-                                                } while (cuantosSaboresC != iteracion);
-                                                datosJugos.eliminarJugo();
-                                                datosSPJ.mostrarListaCompleta();
-                                                cuantosSabores = Integer.parseInt(JOptionPane.showInputDialog("Cuantos sabores desea agregar a su jugo?"));
-                                                if (cuantosSabores >= 1 || cuantosSabores > idSabor) {
-                                                    cuantosSaboresC = cuantosSabores;
-                                                    int cantidad = 0;
-                                                    proporcion = 0;
-                                                    do {
-                                                        porcentaje = 0;// reseto de variable
-                                                        cantidad++;
-                                                        datosSabores.mostrar();
-                                                        int buscarIdSabor = Integer.parseInt(JOptionPane.showInputDialog("Sabor # " + cantidad + "\nIngrese el id del sabor a agregar"));
-                                                        if (datosSabores.buscar(buscarIdSabor) == true) {
-                                                            nombreSabor = datosSabores.obtenerNombreSabor(buscarIdSabor);
-                                                            idSaborVerdadera = buscarIdSabor;
-                                                            //pendiente
-                                                            cantidadSabor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de sabor que le agregara al jugo\n1.  10%\n2.  20%\n3.  25%\n4.  30%\n5.  40%\n6.   50%\n7.  65%\n8.  75%\n9.  80%\n10.  90%\n11.  100%"));
-                                                            if (cantidadSabor == 1) {//10%
-                                                                porcentaje = porcentaje + 10;
-                                                            } else if (cantidadSabor == 2) {//20%
-                                                                porcentaje = porcentaje + 20;
-                                                            } else if (cantidadSabor == 3) {//25%
-                                                                porcentaje = porcentaje + 25;
-                                                            } else if (cantidadSabor == 4) {//30%
-                                                                porcentaje = porcentaje + 30;
-                                                            } else if (cantidadSabor == 5) {//40%
-                                                                porcentaje = porcentaje + 40;
+                                                    int buscarCuantosSabores = datosSPJ.obtenerCuantosSabores(idJugoVerdadera);
+                                                    System.out.println("hola mundo, la cantidad de sabores es " + buscarCuantosSabores);
+                                                    if (buscarCuantosSabores != 1) {
+                                                        for (iteracion = 1; iteracion < buscarCuantosSabores; iteracion++) {
 
-                                                            } else if (cantidadSabor == 6) {//50%
-                                                                porcentaje = porcentaje + 50;
-
-                                                            } else if (cantidadSabor == 7) {//65%
-                                                                porcentaje = porcentaje + 65;
-
-                                                            } else if (cantidadSabor == 8) {//75%
-                                                                porcentaje = porcentaje + 75;
-
-                                                            } else if (cantidadSabor == 9) {//80%
-                                                                porcentaje = porcentaje + 80;
-
-                                                            } else if (cantidadSabor == 10) {//90%
-                                                                porcentaje = porcentaje + 90;
-
-                                                            } else if (cantidadSabor == 11) {//100%
-                                                                porcentaje = porcentaje + 100;
-
-                                                            } else {
-                                                                JOptionPane.showMessageDialog(null, "Opcion no valida");
-                                                            }
-                                                            proporcion2 = 0;//reseteo
-                                                            proporcion2 = proporcion2 + porcentaje;
-                                                            proporcion = proporcion + porcentaje;
-                                                            if (proporcion > 100) {
-                                                                JOptionPane.showMessageDialog(null, "La cantidad de sabores agregados al jugo excede el 100%");
-                                                            } else {
-                                                                porcentajes = proporcion2;
-                                                                if (datosJugos.buscar(idJugo) == true) {
-                                                                    if (datosSabores.buscar(idSabor) == true) {
-                                                                        datosSPJ.agregadoCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes, cuantosSaboresC);
-                                                                        datosSPJ.mostrarListaCompleta();
-                                                                    }
-                                                                }
-                                                            }
-                                                        } else {
-                                                            JOptionPane.showMessageDialog(null, "El sabor agregado no existe vuelva a intentarlo");
-                                                            cantidad = cantidad - 1;
-                                                        }
-                                                    } while (cantidad != cuantosSabores);
-                                                    if (proporcion != 100) {
-                                                        if (datosSPJ.busquedaJugosC(idJugo) == true) {
-                                                            JOptionPane.showMessageDialog(null, "La porporcion del jugo no cumple con el 100% por lo tanto no se guardaran los datos ingresados");
+                                                            datosSPJ.busquedaJugosC(idJugoVerdadera);
                                                             datosSPJ.eliminarDatos();
-                                                            if (datosJugos.buscar(idJugo) == true) {
-                                                                datosJugos.eliminarJugo();
 
-                                                            }
                                                         }
+                                                        datosSPJ.mostrarListaCompleta();
+                                                    } else {
+
+                                                        datosSPJ.busquedaJugosC(idJugoVerdadera);
+                                                        datosSPJ.eliminarDatos();
+                                                        datosSPJ.mostrarListaCompleta();
+
                                                     }
 
-                                                } else {
-                                                    JOptionPane.showMessageDialog(null, "Cantidad ingresada no valida");
-
+                                                    datosJugos.buscar(idJugoVerdadera);
+                                                    System.out.println("hola mundo, la id es " + idJugoVerdadera);
+                                                    nombreJugo = datosJugos.obtenerNombreJugo(idJugoVerdadera);
                                                 }
+
+                                            }
+                                            cuantosSabores = Integer.parseInt(JOptionPane.showInputDialog("Cuantos sabores desea agregar a su jugo?"));
+                                            if (cuantosSabores >= 1 || cuantosSabores > idSabor) {
+                                                cuantosSaboresC = cuantosSabores;
+                                                int cantidad = 0;
+                                                proporcion = 0;
+                                                do {
+                                                    porcentaje = 0;// reseto de variable
+                                                    cantidad++;
+                                                    datosSabores.mostrar();
+                                                    int buscarIdSabor = Integer.parseInt(JOptionPane.showInputDialog("Sabor # " + cantidad + "\nIngrese el id del sabor a agregar"));
+                                                    if (datosSabores.buscar(buscarIdSabor) == true) {
+                                                        nombreSabor = datosSabores.obtenerNombreSabor(buscarIdSabor);
+                                                        idSaborVerdadera = buscarIdSabor;
+                                                        //pendiente
+                                                        cantidadSabor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de sabor que le agregara al jugo\n1.  10%\n\t2.  20%\n3.  25%\n\t4.  30%\n5.  40%\n\t6.   50%\n7.  65%\n\t8.  75%\n9.  80%\n\t10.  90%\n11.  100%"));
+                                                        if (cantidadSabor == 1) {//10%
+                                                            porcentaje = porcentaje + 10;
+                                                        } else if (cantidadSabor == 2) {//20%
+                                                            porcentaje = porcentaje + 20;
+                                                        } else if (cantidadSabor == 3) {//25%
+                                                            porcentaje = porcentaje + 25;
+                                                        } else if (cantidadSabor == 4) {//30%
+                                                            porcentaje = porcentaje + 30;
+                                                        } else if (cantidadSabor == 5) {//40%
+                                                            porcentaje = porcentaje + 40;
+
+                                                        } else if (cantidadSabor == 6) {//50%
+                                                            porcentaje = porcentaje + 50;
+
+                                                        } else if (cantidadSabor == 7) {//65%
+                                                            porcentaje = porcentaje + 65;
+
+                                                        } else if (cantidadSabor == 8) {//75%
+                                                            porcentaje = porcentaje + 75;
+
+                                                        } else if (cantidadSabor == 9) {//80%
+                                                            porcentaje = porcentaje + 80;
+
+                                                        } else if (cantidadSabor == 10) {//90%
+                                                            porcentaje = porcentaje + 90;
+
+                                                        } else if (cantidadSabor == 11) {//100%
+                                                            porcentaje = porcentaje + 100;
+
+                                                        } else {
+                                                            JOptionPane.showMessageDialog(null, "Opcion no valida");
+                                                        }
+                                                        proporcion2 = 0;//reseteo
+                                                        proporcion2 = proporcion2 + porcentaje;
+                                                        proporcion = proporcion + porcentaje;
+                                                        if (proporcion > 100) {
+                                                            JOptionPane.showMessageDialog(null, "La cantidad de sabores agregados al jugo excede el 100%");
+                                                        } else {
+                                                            porcentajes = proporcion2;
+                                                            if (datosJugos.buscar(idJugo) == true) {
+                                                                if (datosSabores.buscar(idSabor) == true) {
+                                                                    datosSPJ.agregadoCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes, cuantosSaboresC);
+                                                                    datosSPJ.mostrarListaCompleta();
+                                                                }
+                                                            }
+                                                        }
+                                                    } else {
+                                                        JOptionPane.showMessageDialog(null, "El sabor agregado no existe vuelva a intentarlo");
+                                                        cantidad = cantidad - 1;
+                                                    }
+                                                } while (cantidad != cuantosSabores);
+                                                if (proporcion != 100) {
+                                                    if (datosSPJ.busquedaJugosC(idJugo) == true) {
+                                                        JOptionPane.showMessageDialog(null, "La porporcion del jugo no cumple con el 100% por lo tanto no se guardaran los datos ingresados");
+                                                        datosSPJ.eliminarDatos();
+                                                        if (datosJugos.buscar(idJugo) == true) {
+                                                            datosJugos.eliminarJugo();
+                                                            idJugo--;
+                                                        }
+                                                    }
+                                                }
+
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Cantidad ingresada no valida");
                                             }
 
                                             break;
 
-                                        case 2:
+                                        case 2://cambiarlo todo
+
                                             buscarIdJugo = 0;
                                             buscarIdJugo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id de Jugo a modificar"));
                                             if (datosSPJ.busquedaJugosC(buscarIdJugo) == true) {
@@ -281,120 +293,126 @@ public class PracticaJugo {
                                                     datosJugos.modificar(idJugoVerdadera, nombreJugo);
 
                                                     JOptionPane.showMessageDialog(null, "Datos modificados con éxito");
+
+                                                    if (datosSPJ.busquedaJugosC(buscarIdJugo) == true) {
+                                                        if (datosJugos.buscar(buscarIdJugo) == true) {
+                                                            idJugoVerdadera = buscarIdJugo;
+                                                            int buscarCuantosSabores = datosSPJ.obtenerCuantosSabores(idJugoVerdadera);
+                                                            System.out.println("hola mundo, la cantidad de sabores es " + buscarCuantosSabores);
+                                                            if (buscarCuantosSabores != 1) {
+                                                                for (iteracion = 0; iteracion < buscarCuantosSabores; iteracion++) {
+                                                                    datosSPJ.busquedaJugosC(idJugoVerdadera);
+                                                                    datosSPJ.eliminarDatos();
+
+                                                                }
+                                                                datosSPJ.mostrarListaCompleta();
+
+                                                            } else {
+
+                                                                datosSPJ.busquedaJugosC(idJugoVerdadera);
+                                                                datosSPJ.eliminarDatos();
+                                                                datosSPJ.mostrarListaCompleta();
+
+                                                            }
+
+                                                        }
+                                                    }
+
                                                 } else {
                                                     JOptionPane.showMessageDialog(null, "El id #" + buscarIdJugo + " no se encontró");
                                                 }
                                             }
 
-                                            buscarIdJugo = 0;
-                                            buscarIdJugo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id de Jugo a modificar"));
-                                            if (datosSPJ.busquedaJugosC(buscarIdJugo) == true) {
-                                                if (datosJugos.buscar(buscarIdJugo) == true) {
-                                                    idJugoVerdadera = buscarIdJugo;
-                                                    nombreJugo = datosJugos.obtenerNombreJugo(idJugoVerdadera);
-                                                }
-                                                if (datosSPJ.busquedaJugosC(buscarIdJugo) == true) {
-                                                    cuantosSaboresC = datosSPJ.obtenerCuantosSabores(buscarIdJugo);
-                                                }
-                                                iteracion = 0;
+                                            cuantosSabores = Integer.parseInt(JOptionPane.showInputDialog("Cuantos sabores desea agregar a su jugo?"));
+                                            if (cuantosSabores >= 1 || cuantosSabores > idSabor) {
+                                                cuantosSaboresC = cuantosSabores;
+                                                int cantidad = 0;
+                                                proporcion = 0;
                                                 do {
-                                                    iteracion++;
-                                                    datosSPJ.eliminarDatos();
-                                                } while (cuantosSaboresC != iteracion);
-                                                datosJugos.eliminarJugo();
-                                                datosSPJ.mostrarListaCompleta();
-                                                cuantosSabores = Integer.parseInt(JOptionPane.showInputDialog("Cuantos sabores desea agregar a su jugo?"));
-                                                if (cuantosSabores >= 1 || cuantosSabores > idSabor) {
-                                                    cuantosSaboresC = cuantosSabores;
-                                                    int cantidad = 0;
-                                                    proporcion = 0;
-                                                    do {
-                                                        porcentaje = 0;// reseto de variable
-                                                        cantidad++;
-                                                        datosSabores.mostrar();
-                                                        int buscarIdSabor = Integer.parseInt(JOptionPane.showInputDialog("Sabor # " + cantidad + "\nIngrese el id del sabor a agregar"));
-                                                        if (datosSabores.buscar(buscarIdSabor) == true) {
-                                                            nombreSabor = datosSabores.obtenerNombreSabor(buscarIdSabor);
-                                                            idSaborVerdadera = buscarIdSabor;
-                                                            //pendiente
-                                                            cantidadSabor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de sabor que le agregara al jugo\n1.  10%\n2.  20%\n3.  25%\n4.  30%\n5.  40%\n6.   50%\n7.  65%\n8.  75%\n9.  80%\n10.  90%\n11.  100%"));
-                                                            if (cantidadSabor == 1) {//10%
-                                                                porcentaje = porcentaje + 10;
-                                                            } else if (cantidadSabor == 2) {//20%
-                                                                porcentaje = porcentaje + 20;
-                                                            } else if (cantidadSabor == 3) {//25%
-                                                                porcentaje = porcentaje + 25;
-                                                            } else if (cantidadSabor == 4) {//30%
-                                                                porcentaje = porcentaje + 30;
-                                                            } else if (cantidadSabor == 5) {//40%
-                                                                porcentaje = porcentaje + 40;
+                                                    porcentaje = 0;// reseto de variable
+                                                    cantidad++;
+                                                    datosSabores.mostrar();
+                                                    int buscarIdSabor = Integer.parseInt(JOptionPane.showInputDialog("Sabor # " + cantidad + "\nIngrese el id del sabor a agregar"));
+                                                    if (datosSabores.buscar(buscarIdSabor) == true) {
+                                                        nombreSabor = datosSabores.obtenerNombreSabor(buscarIdSabor);
+                                                        idSaborVerdadera = buscarIdSabor;
+                                                        //pendiente
+                                                        cantidadSabor = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de sabor que le agregara al jugo\n1.  10%\n\t2.  20%\n3.  25%\n\t4.  30%\n5.  40%\n\t6.   50%\n7.  65%\n\t8.  75%\n9.  80%\n\t10.  90%\n11.  100%"));
+                                                        if (cantidadSabor == 1) {//10%
+                                                            porcentaje = porcentaje + 10;
+                                                        } else if (cantidadSabor == 2) {//20%
+                                                            porcentaje = porcentaje + 20;
+                                                        } else if (cantidadSabor == 3) {//25%
+                                                            porcentaje = porcentaje + 25;
+                                                        } else if (cantidadSabor == 4) {//30%
+                                                            porcentaje = porcentaje + 30;
+                                                        } else if (cantidadSabor == 5) {//40%
+                                                            porcentaje = porcentaje + 40;
 
-                                                            } else if (cantidadSabor == 6) {//50%
-                                                                porcentaje = porcentaje + 50;
+                                                        } else if (cantidadSabor == 6) {//50%
+                                                            porcentaje = porcentaje + 50;
 
-                                                            } else if (cantidadSabor == 7) {//65%
-                                                                porcentaje = porcentaje + 65;
+                                                        } else if (cantidadSabor == 7) {//65%
+                                                            porcentaje = porcentaje + 65;
 
-                                                            } else if (cantidadSabor == 8) {//75%
-                                                                porcentaje = porcentaje + 75;
+                                                        } else if (cantidadSabor == 8) {//75%
+                                                            porcentaje = porcentaje + 75;
 
-                                                            } else if (cantidadSabor == 9) {//80%
-                                                                porcentaje = porcentaje + 80;
+                                                        } else if (cantidadSabor == 9) {//80%
+                                                            porcentaje = porcentaje + 80;
 
-                                                            } else if (cantidadSabor == 10) {//90%
-                                                                porcentaje = porcentaje + 90;
+                                                        } else if (cantidadSabor == 10) {//90%
+                                                            porcentaje = porcentaje + 90;
 
-                                                            } else if (cantidadSabor == 11) {//100%
-                                                                porcentaje = porcentaje + 100;
+                                                        } else if (cantidadSabor == 11) {//100%
+                                                            porcentaje = porcentaje + 100;
 
-                                                            } else {
-                                                                JOptionPane.showMessageDialog(null, "Opcion no valida");
-                                                            }
-                                                            proporcion2 = 0;//reseteo
-                                                            proporcion2 = proporcion2 + porcentaje;
-                                                            proporcion = proporcion + porcentaje;
-                                                            if (proporcion > 100) {
-                                                                JOptionPane.showMessageDialog(null, "La cantidad de sabores agregados al jugo excede el 100%");
-                                                            } else {
-                                                                porcentajes = proporcion2;
-                                                                if (datosJugos.buscar(idJugo) == true) {
-                                                                    if (datosSabores.buscar(idSabor) == true) {
-                                                                        datosSPJ.agregadoCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes, cuantosSaboresC);
-                                                                        datosSPJ.mostrarListaCompleta();
-                                                                    }
+                                                        } else {
+                                                            JOptionPane.showMessageDialog(null, "Opcion no valida");
+                                                        }
+                                                        proporcion2 = 0;//reseteo
+                                                        proporcion2 = proporcion2 + porcentaje;
+                                                        proporcion = proporcion + porcentaje;
+                                                        if (proporcion > 100) {
+                                                            JOptionPane.showMessageDialog(null, "La cantidad de sabores agregados al jugo excede el 100%");
+                                                        } else {
+                                                            porcentajes = proporcion2;
+                                                            if (datosJugos.buscar(idJugo) == true) {
+                                                                if (datosSabores.buscar(idSabor) == true) {
+                                                                    datosSPJ.agregadoCompleto(idJugoVerdadera, nombreJugo, idSaborVerdadera, nombreSabor, porcentajes, cuantosSaboresC);
+                                                                    datosSPJ.mostrarListaCompleta();
                                                                 }
                                                             }
-                                                        } else {
-                                                            JOptionPane.showMessageDialog(null, "El sabor agregado no existe vuelva a intentarlo");
-                                                            cantidad = cantidad - 1;
                                                         }
-                                                    } while (cantidad != cuantosSabores);
-                                                    if (proporcion != 100) {
-                                                        if (datosSPJ.busquedaJugosC(idJugo) == true) {
-                                                            JOptionPane.showMessageDialog(null, "La porporcion del jugo no cumple con el 100% por lo tanto no se guardaran los datos ingresados");
-                                                            datosSPJ.eliminarDatos();
-                                                            if (datosJugos.buscar(idJugo) == true) {
-                                                                datosJugos.eliminarJugo();
-
-                                                            }
+                                                    } else {
+                                                        JOptionPane.showMessageDialog(null, "El sabor agregado no existe vuelva a intentarlo");
+                                                        cantidad = cantidad - 1;
+                                                    }
+                                                } while (cantidad != cuantosSabores);
+                                                if (proporcion != 100) {
+                                                    if (datosSPJ.busquedaJugosC(idJugo) == true) {
+                                                        JOptionPane.showMessageDialog(null, "La porporcion del jugo no cumple con el 100% por lo tanto no se guardaran los datos ingresados");
+                                                        datosSPJ.eliminarDatos();
+                                                        if (datosJugos.buscar(idJugo) == true) {
+                                                            datosJugos.eliminarJugo();
+                                                            idJugo--;
                                                         }
                                                     }
-
-                                                } else {
-                                                    JOptionPane.showMessageDialog(null, "Cantidad ingresada no valida");
-
                                                 }
+
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Cantidad ingresada no valida");
                                             }
 
                                             break;
 
                                     }
 
-                                    break;
+                                    opcionModificar = Integer.parseInt(JOptionPane.showInputDialog("\n1.Cambiar los sabores que componen el jugo"
+                                            + "\n2.Cambiar el nombre del jugo junto a sus respectivo sabores"
+                                            + "\nCualquier otro numero para salir."));
                                 }
-                                opcionModificar = Integer.parseInt(JOptionPane.showInputDialog("\n1.Cambiar los sabores que componen el jugo"
-                                        + "\n2.Cambiar el nombre del jugo junto a sus respectivo sabores"
-                                        + "\nCualquier otro numero para salir."));
+                                break;
                         }
 
                         opcionJugos = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opcion que desea elegir \n"
