@@ -466,7 +466,7 @@ public class PracticaJugo {
                     if (datosJugos.buscar(idJugo) == true) {
                         datosSPJ.mostrarListaCompleta();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Esta lista todavia no ha sido creada...1");
+                        JOptionPane.showMessageDialog(null, "Esta lista todavia no ha sido creada...");
                     }
             }
 
