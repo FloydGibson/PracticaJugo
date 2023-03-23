@@ -138,16 +138,18 @@ public class AlmacenamientoSPJ {
     public void eliminarDatos(){
         listaCompleta.remove(ubicacion);
     }
-    //Pendiente cambiar este metodo
-    public int obtenerCuantosSabores(int idJugo){
-        int cuantosSabores=0;
-        for(SaboresPorJugos particularidad:listaCompleta){
-            if(particularidad.getCuantosSaboresC()==idJugo){
-                return particularidad.getCuantosSaboresC();
-            }
+    //Cambios hechos, a mi me funciono ya XD
+  public int obtenerCuantosSabores(int idJugo){
+    int cuantosSabores = 0;
+    for(SaboresPorJugos particularidad:listaCompleta){
+        if(particularidad.getIdJugo() == idJugo){
+            cuantosSabores = particularidad.getCuantosSaboresC();
+            break;
         }
-        return 0;
     }
+    return cuantosSabores;
+}
+
     
 
 }

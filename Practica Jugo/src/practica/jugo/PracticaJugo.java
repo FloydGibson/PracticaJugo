@@ -178,7 +178,7 @@ public class PracticaJugo {
                                                     int buscarCuantosSabores = datosSPJ.obtenerCuantosSabores(idJugoVerdadera);
                                                     System.out.println("hola mundo, la cantidad de sabores es " + buscarCuantosSabores);
                                                     if (buscarCuantosSabores != 1) {
-                                                        for (iteracion = 1; iteracion < buscarCuantosSabores; iteracion++) {
+                                                        for (iteracion = 0; iteracion < buscarCuantosSabores; iteracion++) {
 
                                                             datosSPJ.busquedaJugosC(idJugoVerdadera);
                                                             datosSPJ.eliminarDatos();
